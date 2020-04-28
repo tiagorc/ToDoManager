@@ -3,7 +3,7 @@ import {
     View, Text, Image, Button, Alert, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, 
  } from 'react-native';
 
-export const img = require('./../assets/login.png')
+export const img = require('./../assets/todolist.png')
 
 const Login = props => {
     const [email, setEmail] = useState(props.email);
