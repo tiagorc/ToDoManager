@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import { SafeAreaView, KeyboardAvoidingView, View, Image, TextInput, Button, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { 
+    View, Text, Image, Button, Alert, TextInput, StyleSheet, SafeAreaView, KeyboardAvoidingView, 
+ } from 'react-native';
 
 export const img = require('./../assets/login.png')
 
-const Login = () => {
+const Login = props => {
+    const [email, setEmail] = useState(props.email);
+    const [password, setPassword] = useState('');
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -13,12 +17,18 @@ const Login = () => {
                 <View style={styles.bottomView}>
                     <TextInput style={styles.input}
                         placeholder="E-mail"
+                        value={email}
                         keyboardType='email-address'
-                        autoCapitalize='none' />
+                        autoCapitalize='none' 
+                        onChangeText={email => setEmail(email)}/>
                     <TextInput style={styles.input}
                         placeholder="Senha"
-                        secureTextEntry={true} />
-                    <Button title="Login" />
+                        value={password}
+                        secureTextEntry={true}
+                        onChangeText={password => setPassword(password)} />
+                    <Button title="Login" onPress={() => 
+                        Alert.alert(`Email: ${email}, password: ${password}`) }
+                    />
                     <View style={styles.textContainer}>
                         <Text>Não possui cadastro?</Text>
                         <Text style={styles.textRegister}> Criar registro</Text>
