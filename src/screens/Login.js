@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, KeyboardAvoidingView, View, Image, TextInput, Button, Text, StyleSheet } from 'react-native';
 
-export const img = require('./../images/login.png')
+export const img = require('./../assets/login.png')
 
 const Login = () => {
     return (
