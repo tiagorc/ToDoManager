@@ -1,19 +1,22 @@
-/**
- * @format
- */
+import React from 'react';
 
+import 'react-native-gesture-handler';
 
-import {AppRegistry} from 'react-native';
+import { AppRegistry, SafeAreaView } from 'react-native';
 
-import App from './src/screens/App';
-import Login from './src/screens/Login';
-import Register from './src/screens/Register';
-
+import Routes from './src/services/Routes';
 import {name as appName} from './app.json';
-import React from 'react'
 
-const Index = () => {
-    return <Login email="myemail@mail.com" />;
-}
+import { NavigationContainer } from '@react-navigation/native';
 
-AppRegistry.registerComponent(appName, () => Register);
+const wrappedRoutes = () => {
+    return (
+        <NavigationContainer>
+            <SafeAreaView style={{ flex: 1 }}>
+                <Routes />
+            </SafeAreaView>
+        </NavigationContainer>
+    );
+};
+
+AppRegistry.registerComponent(appName, () => wrappedRoutes);
