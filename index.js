@@ -8,6 +8,7 @@ import Routes from './src/services/Routes';
 import {name as appName} from './app.json';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { initializeFirebaseAPI } from './src/services/FirebaseAPI';
 
 const wrappedRoutes = () => {
     return (
@@ -19,4 +20,7 @@ const wrappedRoutes = () => {
     );
 };
 
-AppRegistry.registerComponent(appName, () => wrappedRoutes);
+AppRegistry.registerComponent(appName, () => {
+    initializeFirebaseAPI();
+    return wrappedRoutes
+});
