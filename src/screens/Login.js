@@ -3,6 +3,7 @@ import {
     View, Text, Image, Button, Alert, TextInput, StyleSheet, KeyboardAvoidingView, 
  } from 'react-native';
 import { signInOnFirebaseAsync } from '../services/FirebaseAPI'
+import { CommonActions } from '@react-navigation/native';
 
 const img = require('./../assets/todolist.png')
 
@@ -20,6 +21,12 @@ export default class Login extends Component {
         try {
             const user = await signInOnFirebaseAsync(this.state.email, this.state.password);
             Alert.alert('Login com sucesso', `Usuário ${ user.user.email } autenticado com sucesso`);
+            this.props.navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'TaskList' }],
+                }),
+            );
         } catch (error) {
             Alert.alert('Falha no login', error.message);
         }
