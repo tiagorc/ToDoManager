@@ -22,6 +22,7 @@ export default class Login extends Component {
             const user = await signInOnFirebaseAsync(this.state.email, this.state.password);
             Alert.alert('Login com sucesso', `Usuário ${ user.user.email } autenticado com sucesso`);
             this.props.navigation.dispatch(
+                //Limpando a stack de navegação para evitar que o botão de voltar apareça
                 CommonActions.reset({
                     index: 0,
                     routes: [{ name: 'TaskList' }],
