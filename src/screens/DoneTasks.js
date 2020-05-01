@@ -14,7 +14,7 @@ export default class DoneTasks extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TaskListView tasks={this.state.tasks} />
+                <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
             </View>
         );
     }
@@ -32,7 +32,6 @@ export default class DoneTasks extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
         paddingLeft: 10,
         paddingRight: 10,
     },

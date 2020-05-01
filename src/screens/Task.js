@@ -4,14 +4,33 @@ import { writeTaskOnFirebaseAsync } from '../services/FirebaseAPI';
 
 export default class Task extends Component {
     state = {
+        key: '',
         title: '',
         resume: '',
         priority: true,
         isDone: false,
     };
 
+    constructor(props) {
+        super(props);
+
+        try {
+            const { task } = this.props.route.params;
+            this.state = {
+                key: task.key,
+                title: task.title,
+                resume: task.resume,
+                priority: task.priority,
+                isDone: task.isDone,
+            };
+            console.log("Editando tarefa existente")
+        } catch (error) {
+            console.log("Criando nova tarefa")
+        }
+    }
     async _saveTaskAsync() {
         var task = {
+            key: this.state.key,
             title: this.state.title,
             resume: this.state.resume,
             priority: this.state.priority,
