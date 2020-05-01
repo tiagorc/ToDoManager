@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { 
-    Image, View, KeyboardAvoidingView, StyleSheet, Text, TextInput, Button , Alert 
+import {
+    Image, View, KeyboardAvoidingView, StyleSheet, Text, TextInput, Button, Alert
 } from 'react-native';
 import { createUserOnFirebaseAsync } from '../services/FirebaseAPI'
 
@@ -15,10 +15,12 @@ export default class Register extends Component {
     async _createUserAsync() {
         try {
             const user = await createUserOnFirebaseAsync(this.state.email, this.state.password);
-            Alert.alert('Usuário criado!', `Usuário ${ user.email } foi criado com sucesso`,
-            [{ text: 'OK', onPress: () => {
-                this.props.navigation.goBack();
-            }}]);
+            Alert.alert('Usuário criado!', `Usuário ${user.email} foi criado com sucesso`,
+                [{
+                    text: 'OK', onPress: () => {
+                        this.props.navigation.goBack();
+                    }
+                }]);
         } catch (error) {
             Alert.alert('Erro ao criar usuário', error.message);
         }
@@ -28,11 +30,11 @@ export default class Register extends Component {
         return (
             <KeyboardAvoidingView style={styles.container} behavior='padding'>
                 <View style={styles.topView}>
-                    <Image style={styles.img} source={img}/>
+                    <Image style={styles.img} source={img} />
                     <Text style={styles.title}>Cadastro de usuário</Text>
                 </View>
                 <View style={styles.bottomView}>
-                    <TextInput style={styles.input} 
+                    <TextInput style={styles.input}
                         placeholder="E-mail"
                         keyboardType='email-address'
                         autoCapitalize='none'
@@ -40,7 +42,7 @@ export default class Register extends Component {
                     <TextInput style={styles.input}
                         placeholder="Senha"
                         secureTextEntry={true}
-                        onChangeText={password => this.setState({ password })}/>
+                        onChangeText={password => this.setState({ password })} />
                     <Button title="Registrar usuário"
                         onPress={() => {
                             this._createUserAsync()
@@ -81,5 +83,5 @@ const styles = StyleSheet.create({
     },
     input: {
         marginBottom: 20,
-    },    
+    },
 });

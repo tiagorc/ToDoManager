@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { 
-    View, Text, Image, Button, Alert, TextInput, StyleSheet, KeyboardAvoidingView, 
- } from 'react-native';
-import { signInOnFirebaseAsync } from '../services/FirebaseAPI'
+import {
+    View, Text, Image, Button, Alert, TextInput, StyleSheet, KeyboardAvoidingView
+} from 'react-native';
+import { signInOnFirebaseAsync } from '../services/FirebaseAPI';
 import { CommonActions } from '@react-navigation/native';
 
-const img = require('./../assets/todolist.png')
+const img = require('./../assets/todolist.png');
 
 export default class Login extends Component {
     static navigationOptions = {
@@ -17,9 +17,10 @@ export default class Login extends Component {
         password: ''
     };
 
-    async _signInAsync () {
+    async _signInAsync() {
         try {
-            const user = await signInOnFirebaseAsync(this.state.email, this.state.password);
+            /* const user = await signInOnFirebaseAsync(this.state.email, this.state.password);*/
+            const user = await signInOnFirebaseAsync("rnmail@mail.com", "rnmail")
             this.props.navigation.dispatch(
                 //Limpando a stack de navegação para evitar que o botão de voltar apareça
                 CommonActions.reset({
@@ -36,28 +37,28 @@ export default class Login extends Component {
         return (
             <KeyboardAvoidingView style={styles.container} behavior='padding'>
                 <View style={styles.topView}>
-                    <Image style={styles.img} source={img}/>
+                    <Image style={styles.img} source={img} />
                 </View>
                 <View style={styles.bottomView}>
                     <TextInput style={styles.input}
                         placeholder="E-mail"
                         value={this.state.email}
                         keyboardType='email-address'
-                        autoCapitalize='none' 
-                        onChangeText={text => this.setState({ email: text }) }/>
+                        autoCapitalize='none'
+                        onChangeText={text => this.setState({ email: text })} />
                     <TextInput style={styles.input}
                         placeholder="Senha"
                         secureTextEntry={true}
                         onChangeText={text => this.setState({ password: text })} />
-                    <Button title="Login" onPress={() => 
-                        this._signInAsync() }
+                    <Button title="Login" onPress={() =>
+                        this._signInAsync()}
                     />
                     <View style={styles.textContainer}>
                         <Text>Não possui cadastro?</Text>
-                    <Text style={styles.textRegister} onPress={() => {
-                        const { navigate } = this.props.navigation;
-                        navigate('Register');
-                    }}> Criar registro </Text>
+                        <Text style={styles.textRegister} onPress={() => {
+                            const { navigate } = this.props.navigation;
+                            navigate('Register');
+                        }}> Criar registro </Text>
                     </View>
                 </View>
             </KeyboardAvoidingView>

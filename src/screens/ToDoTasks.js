@@ -28,10 +28,9 @@ export default class ToDoTasks extends Component {
         return (
             <View style={styles.container}>
                 <TaskListView tasks={this.state.tasks} />
-                <TouchableOpacity style={styles.floatingButton}
-                    onPress={() => this._goToTask()}>
-                        <Image source={imagePlus} style={styles.image} />
-                    </TouchableOpacity>
+                <TouchableOpacity style={styles.floatingButton} onPress={() => this._goToTask()}>
+                    <Image source={imagePlus} style={styles.image} />
+                </TouchableOpacity>
             </View>
         );
     }

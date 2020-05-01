@@ -7,16 +7,16 @@
  */
 
 import React, { Component } from 'react';
-import {  View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import { currentFirebaseUser } from '../services/FirebaseAPI';
 
 export default class App extends Component {
 
-  async componentDidMount () {
+  async componentDidMount() {
     let resetNavigation = CommonActions.reset({
       index: 0,
-      routes: [{name: 'Login'}],
+      routes: [{ name: 'Login' }],
     });
 
     try {
@@ -26,7 +26,7 @@ export default class App extends Component {
         this.props.navigation.dispatch(
           CommonActions.reset({
             index: 0,
-            routes: [{name: 'TaskList'}],
+            routes: [{ name: 'TaskList' }],
           }),
         );
       }
@@ -38,7 +38,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style= {styles.container}>
+      <View style={styles.container}>
         <ActivityIndicator style={styles.loading} />
       </View>
     )
@@ -47,7 +47,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1, 
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
-})
+});

@@ -32,29 +32,29 @@ export default class Task extends Component {
                 <TextInput style={styles.input}
                     placeholder="Título"
                     value={this.state.title}
-                    onChangeText={(typedTtitle) => this.setState({title: typedTtitle})} />
+                    onChangeText={(typedTtitle) => this.setState({ title: typedTtitle })} />
 
                 <TextInput style={[styles.input, styles.multilineInput]}
                     placeholder="Resumo"
                     multiline={true}
                     numberOfLines={4}
                     value={this.state.resume}
-                    onChangeText={(typedResume) => this.setState({resume: typedResume})} />
+                    onChangeText={(typedResume) => this.setState({ resume: typedResume })} />
 
                 <View>
                     <Switch value={this.state.priority}
-                        onValueChange={(value) => this.setState({priority: value})} />
+                        onValueChange={(value) => this.setState({ priority: value })} />
                     <Text style={styles.switchText}>É prioridade?</Text>
                 </View>
 
                 <View style={styles.switchContainer}>
                     <Switch value={this.state.isDone}
-                        onValueChange={(value) => this.setState({isDone: value})} />
+                        onValueChange={(value) => this.setState({ isDone: value })} />
                     <Text style={styles.switchText}>Finalizado?</Text>
                 </View>
 
                 <Button style={styles.button}
-                    title= "Salvar"
+                    title="Salvar"
                     onPress={() => this._saveTaskAsync()} />
             </View>
         );

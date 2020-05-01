@@ -5,9 +5,9 @@ const imageDone = require('../assets/todolist.png');
 
 export default class DoneTasks extends Component {
     render() {
-        return(
-            <View style={ styles.container } />
-        )
+        return (
+            <View style={styles.container} />
+        );
     }
 }
 
