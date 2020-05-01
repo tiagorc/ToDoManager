@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { TaskListView } from '../components/Components';
+import { readTasksFromFirebaseAsync } from '../services/FirebaseAPI';
 
 const imageDone = require('../assets/todolist.png');
 
 export default class DoneTasks extends Component {
+
+    state = {
+        tasks: []
+    };
+
     render() {
         return (
-            <View style={styles.container} />
+            <View style={styles.container}>
+                <TaskListView tasks={this.state.tasks} />
+            </View>
         );
+    }
+
+    componentDidMount() {
+        readTasksFromFirebaseAsync(this._fetchTasks.bind(this));
+    }
+
+    _fetchTasks(tasks) {
+        const tasksToDo = tasks.filter(t => t.isDone);
+        this.setState({ tasks: tasksToDo });
     }
 }
 
