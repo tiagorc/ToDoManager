@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const imageCheck = require('../assets/todolist.png');
-
+const imagePlus = require('../assets/plus.png')
 export default class ToDoTasks extends Component {
+
+    _goToTask() {
+        this.props.navigation.navigate('Task');
+    }
+
     render() {
         return (
-            <View style={StyleSheet.container} />
+            <View style={StyleSheet.container}>
+                <TouchableOpacity style={styles.floatingButton}
+                    onPress={() => this._goToTask()}>
+                        <Image source={imagePlus} style={styles.image} />
+                    </TouchableOpacity>
+            </View>
         );
     }
 }
@@ -25,5 +36,10 @@ const styles = StyleSheet.create({
     image: {
         width: 50,
         height: 50,
+    },
+    floatButton: {
+        position: 'absolute',
+        right: 20,
+        bottom: 20,
     }
 });

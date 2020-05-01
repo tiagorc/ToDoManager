@@ -45,15 +45,6 @@ export default class App extends Component {
   }
 }
 
-// const App = () => {
-//   return (
-//     <View style={styles.container}>
-//      <Text style={styles.bigBlue}>Big blue</Text>
-//       <Text style={styles.smallRed}>Small Red</Text>
-//     </View>
-//   );
-// };
-
 const styles = StyleSheet.create({
   container: {
     flex:1, 
