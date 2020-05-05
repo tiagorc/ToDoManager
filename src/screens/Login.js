@@ -19,8 +19,7 @@ export default class Login extends Component {
 
     async _signInAsync() {
         try {
-            /* const user = await signInOnFirebaseAsync(this.state.email, this.state.password);*/
-            const user = await signInOnFirebaseAsync("rnmail@mail.com", "rnmail")
+            const user = await signInOnFirebaseAsync(this.state.email, this.state.password);
             this.props.navigation.dispatch(
                 //Limpando a stack de navegação para evitar que o botão de voltar apareça
                 CommonActions.reset({
