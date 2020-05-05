@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Image, View, KeyboardAvoidingView, StyleSheet, Text, TextInput, Button, Alert
+    Image, View, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableHighlight, Alert
 } from 'react-native';
 import { createUserOnFirebaseAsync } from '../services/FirebaseAPI'
 
@@ -43,13 +43,12 @@ export default class Register extends Component {
                         placeholder="Senha"
                         secureTextEntry={true}
                         onChangeText={password => this.setState({ password })} />
-                    <Button title="Registrar usuário"
-                        onPress={() => {
-                            this._createUserAsync()
-                        }}
-                    />
+                    <TouchableHighlight style={styles.submit} onPress={() =>
+                        this._createUserAsync()} underlayColor='#fff'>
+                        <Text style={styles.submitText}>Registrar usuário</Text>
+                    </TouchableHighlight>
                 </View>
-            </KeyboardAvoidingView>
+            </KeyboardAvoidingView >
         );
     };
 };
@@ -83,5 +82,16 @@ const styles = StyleSheet.create({
     },
     input: {
         marginBottom: 20,
+    },
+    submit: {
+        marginTop: 10,
+        padding: 12,
+        backgroundColor: 'orange',
+        borderRadius: 10,
+    },
+    submitText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
     },
 });
