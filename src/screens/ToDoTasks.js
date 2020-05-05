@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { TaskListView } from '../components/Components';
 import { readTasksFromFirebaseAsync } from '../services/FirebaseAPI';
 
-const imagePlus = require('../assets/todolist.png');
+const imagePlus = require('../assets/plus.png');
 
 export default class ToDoTasks extends Component {
 
@@ -28,10 +28,10 @@ export default class ToDoTasks extends Component {
         return (
             <View style={styles.container}>
                 <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
-                <TouchableOpacity style={styles.floatingButton} onPress={() => this._goToTask()}>
-                    <Image source={imagePlus} style={styles.image} />
+                <TouchableOpacity onPress={() => this._goToTask()}>
+                    <Image style={styles.floatButton} source={imagePlus} />
                 </TouchableOpacity>
-            </View>
+            </View >
         );
     }
 }
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     icon: {
+        color: 'orange',
         width: 26,
         height: 26,
     },
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     },
     floatButton: {
         position: 'absolute',
-        right: 20,
+        right: 10,
         bottom: 20,
     }
 });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, Image, Button, Alert, TextInput, StyleSheet, KeyboardAvoidingView
+    View, Text, Image, Alert, TextInput, StyleSheet, KeyboardAvoidingView, TouchableHighlight
 } from 'react-native';
 import { signInOnFirebaseAsync } from '../services/FirebaseAPI';
 import { CommonActions } from '@react-navigation/native';
@@ -49,9 +49,10 @@ export default class Login extends Component {
                         placeholder="Senha"
                         secureTextEntry={true}
                         onChangeText={text => this.setState({ password: text })} />
-                    <Button title="Login" onPress={() =>
-                        this._signInAsync()}
-                    />
+                    <TouchableHighlight style={styles.submit} onPress={() =>
+                        this._signInAsync()} underlayColor='#fff'>
+                        <Text style={styles.submitText} >Login</Text>
+                    </TouchableHighlight>
                     <View style={styles.textContainer}>
                         <Text>Não possui cadastro?</Text>
                         <Text style={styles.textRegister} onPress={() => {
@@ -94,5 +95,16 @@ const styles = StyleSheet.create({
     },
     textRegister: {
         fontWeight: 'bold',
+    },
+    submit: {
+        marginTop: 10,
+        padding: 12,
+        backgroundColor: 'orange',
+        borderRadius: 10,
+    },
+    submitText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
     }
 });

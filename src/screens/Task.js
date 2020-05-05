@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Switch, Button, TextInput, Text, Alert } from 'react-native';
+import { StyleSheet, View, Switch, TouchableHighlight, TextInput, Text, Alert } from 'react-native';
 import { writeTaskOnFirebaseAsync } from '../services/FirebaseAPI';
 
 export default class Task extends Component {
@@ -60,7 +60,7 @@ export default class Task extends Component {
                     value={this.state.resume}
                     onChangeText={(typedResume) => this.setState({ resume: typedResume })} />
 
-                <View>
+                <View style={styles.switchContainer}>
                     <Switch value={this.state.priority}
                         onValueChange={(value) => this.setState({ priority: value })} />
                     <Text style={styles.switchText}>É prioridade?</Text>
@@ -72,13 +72,16 @@ export default class Task extends Component {
                     <Text style={styles.switchText}>Finalizado?</Text>
                 </View>
 
-                <Button style={styles.button}
-                    title="Salvar"
-                    onPress={() => this._saveTaskAsync()} />
+                <TouchableHighlight style={styles.submit} onPress={() =>
+                    this._saveTaskAsync()} underlayColor='#fff'>
+                    <Text style={styles.submitText} >Salvar</Text>
+                </TouchableHighlight>
             </View>
         );
     }
 }
+
+const lightGray = '#D3D3D3D3';
 
 const styles = StyleSheet.create({
     container: {
@@ -87,10 +90,16 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     input: {
+        padding: 8,
         marginBottom: 20,
+        height: 40,
+        borderWidth: 1.0,
+        borderColor: lightGray,
     },
     multilineInput: {
         height: 100,
+        borderWidth: 1.0,
+        borderColor: lightGray,
     },
     switchContainer: {
         flexDirection: 'row',
@@ -100,6 +109,17 @@ const styles = StyleSheet.create({
     switchText: {
         marginLeft: 20,
         color: 'black',
+        fontSize: 16,
+    },
+    submit: {
+        marginTop: 10,
+        padding: 12,
+        backgroundColor: 'orange',
+        borderRadius: 10,
+    },
+    submitText: {
+        color: '#fff',
+        textAlign: 'center',
         fontSize: 18,
     }
 });
