@@ -21,6 +21,7 @@ export default class ToDoTasks extends Component {
     }
 
     _goToTask() {
+        console.log("passou aqui")
         this.props.navigation.navigate('Task');
     }
 
@@ -28,10 +29,10 @@ export default class ToDoTasks extends Component {
         return (
             <View style={styles.container}>
                 <TaskListView tasks={this.state.tasks} navigation={this.props.navigation} />
-                <TouchableOpacity onPress={() => this._goToTask()}>
-                    <Image style={styles.floatButton} source={imagePlus} />
+                <TouchableOpacity style={styles.floatButton} onPress={() => this._goToTask()}>
+                    <Image source={imagePlus} style={styles.image} />
                 </TouchableOpacity>
-            </View >
+            </View>
         );
     }
 }
